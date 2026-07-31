@@ -1,0 +1,57 @@
+{
+  "timestamp": "2026-07-29 22:03:44",
+  "backend": "ibm_marrakesh",
+  "shots": 8192,
+  "total_circuits": 66,
+  "jobs": {
+    "phi_echo": {
+      "job_id": "d9l5p4bhdfks73ckhlog",
+      "description": "phi-scan con echo (34 circuiti, 2 qubit)",
+      "n_circuits": 34,
+      "status": "submitted",
+      "timestamp": "2026-07-29 22:03:29"
+    },
+    "pasm_dist": {
+      "job_id": "d9l5p4rjf64c739j30n0",
+      "description": "PASM distanza fisica (3 circuiti, 5 qubit)",
+      "n_circuits": 3,
+      "status": "submitted",
+      "timestamp": "2026-07-29 22:03:31"
+    },
+    "pasm_3q": {
+      "job_id": "d9l5p5abr2fc73e8884g",
+      "description": "PASM 3 qubit (2 circuiti, 3 qubit)",
+      "n_circuits": 2,
+      "status": "submitted",
+      "timestamp": "2026-07-29 22:03:33"
+    },
+    "pasm_noise": {
+      "job_id": "d9l5p63jf64c739j30og",
+      "description": "PASM noise scan (4 circuiti, 2 qubit)",
+      "n_circuits": 4,
+      "status": "submitted",
+      "timestamp": "2026-07-29 22:03:36"
+    },
+    "pasm_plus": {
+      "job_id": "d9l5p6rhdfks73ckhls0",
+      "description": "PASM |++> init (9 circuiti, 2 qubit)",
+      "n_circuits": 9,
+      "status": "submitted",
+      "timestamp": "2026-07-29 22:03:39"
+    },
+    "pasm_scale": {
+      "job_id": "d9l5p7abr2fc73e8887g",
+      "description": "PASM N-qubit scaling (4 circuiti, fino a 6 qubit)",
+      "n_circuits": 4,
+      "status": "submitted",
+      "timestamp": "2026-07-29 22:03:41"
+    },
+    "witness": {
+      "job_id": "d9l5p7qbr2fc73e88890",
+      "description": "Entanglement witness (10 circuiti, 2 qubit)",
+      "n_circuits": 10,
+      "status": "submitted",
+      "timestamp": "2026-07-29 22:03:43"
+    }
+  }
+}

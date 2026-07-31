@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-07-29 23:13",
+  "job_id": "d9l6q2jhdfks73ckir1g",
+  "backend": "ibm_kingston",
+  "account": "API2",
+  "esperimenti": ["QST_DISCORD (9 circ)", "PASM_SCALE (4 circ)", "WITNESS (10 circ)"],
+  "n_circuiti": 23,
+  "shots": 8192,
+  "status": "QUEUED"
+}

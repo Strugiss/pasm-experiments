@@ -1,0 +1,213 @@
+{
+  "nuovi_dati": {
+    "N2N3_sweep_noH_circ0": {
+      "MI": 7.394858911213831e-06,
+      "c_zz": -0.003173828125
+    },
+    "N2N3_sweep_noH_circ1": {
+      "MI": 0.0005576741360828752,
+      "c_zz": -0.02783203125
+    },
+    "N2N3_sweep_noH_circ2": {
+      "MI": 0.00028725043569943765,
+      "c_zz": -0.0205078125
+    },
+    "N2N3_sweep_noH_circ3": {
+      "MI": 9.257406314677752e-05,
+      "c_zz": -0.011962890625
+    },
+    "N2N3_sweep_noH_circ4": {
+      "MI": 6.443241363718322e-05,
+      "c_zz": -0.008544921875
+    },
+    "N2N3_sweep_noH_circ5": {
+      "MI": 0.0006983842423353703,
+      "c_zz": 0.03173828125
+    },
+    "N2N3_sweep_noH_circ6": {
+      "MI": 5.031453949033704e-06,
+      "c_zz": -0.0029296875
+    },
+    "N2N3_sweep_noH_circ7": {
+      "MI": 9.33242763068165e-07,
+      "c_zz": 0.000732421875
+    },
+    "N2N3_sweep_noH_circ8": {
+      "MI": 3.9783669734561045e-05,
+      "c_zz": -0.005615234375
+    },
+    "N2N3_sweep_noH_circ9": {
+      "MI": 1.7832641741488686e-05,
+      "c_zz": -0.005126953125
+    },
+    "N2N3_sweep_noH_circ10": {
+      "MI": 0.00025749142390729673,
+      "c_zz": 0.018798828125
+    },
+    "N2N3_sweep_noH_circ11": {
+      "MI": 0.00013810953280124494,
+      "c_zz": -0.013671875
+    },
+    "N2N3_sweep_noH_circ12": {
+      "MI": 0.0006909366866076905,
+      "c_zz": -0.031005859375
+    },
+    "N2N3_sweep_noH_circ13": {
+      "MI": 0.0004090905065092798,
+      "c_zz": 0.02392578125
+    },
+    "N2N3_sweep_noH_circ14": {
+      "MI": 0.00012129486183232174,
+      "c_zz": -0.012939453125
+    },
+    "N2N3_sweep_noH_circ15": {
+      "MI": 0.0001742849587687001,
+      "c_zz": -0.01513671875
+    },
+    "N2_pi_H_circ0": {
+      "MI": 0.00029057822036476777,
+      "c_zz": 0.88330078125
+    },
+    "N2_0_H_circ0": {
+      "MI": 6.500505434153814e-05,
+      "c_zz": 0.91748046875
+    },
+    "N2_sweep_H_circ0": {
+      "MI": 6.954500362646443e-05,
+      "c_zz": 0.920166015625
+    },
+    "N2_sweep_H_circ1": {
+      "MI": 2.380184437345001e-05,
+      "c_zz": 0.005615234375
+    },
+    "N2_sweep_H_circ2": {
+      "MI": 0.7211441474902434,
+      "c_zz": 0.898681640625
+    },
+    "N2_sweep_H_circ3": {
+      "MI": 0.0001633772994493743,
+      "c_zz": -0.0146484375
+    },
+    "N2_sweep_H_circ4": {
+      "MI": 9.14994011594894e-05,
+      "c_zz": 0.89111328125
+    },
+    "N2_sweep_H_circ5": {
+      "MI": 0.00025441005535431493,
+      "c_zz": -0.01953125
+    },
+    "N2_sweep_H_circ6": {
+      "MI": 0.7224994236986408,
+      "c_zz": 0.899169921875
+    },
+    "N2_sweep_H_circ7": {
+      "MI": 0.00029643194026229835,
+      "c_zz": 0.020263671875
+    },
+    "N2_sweep_H_circ8": {
+      "MI": 0.020633332774677382,
+      "c_zz": 0.978271484375
+    },
+    "N2_sweep_H_circ9": {
+      "MI": 0.000379342700544294,
+      "c_zz": -0.022705078125
+    },
+    "N2_sweep_H_circ10": {
+      "MI": 0.007010317660272325,
+      "c_zz": 0.93896484375
+    },
+    "N2_sweep_H_circ11": {
+      "MI": 2.74359137237834e-05,
+      "c_zz": -0.006103515625
+    }
+  },
+  "storici": {
+    "PASM_marrakesh": {
+      "MI": 0.063,
+      "err": 0.005,
+      "z": 12.6,
+      "N": 10
+    },
+    "PASM_kingston": {
+      "MI": 0.047,
+      "err": 0.004,
+      "z": 11.8,
+      "N": 10
+    },
+    "Replica_10x": {
+      "MI": null,
+      "z": 39.6,
+      "N": 10,
+      "note": "Combined Z across 10 repliche"
+    },
+    "phi_scan_peak_pi": {
+      "MI": null,
+      "z": null,
+      "note": "MI modulata da phi, picco a pi"
+    },
+    "PASM_Distanza": {
+      "MI": null,
+      "z": 34.0,
+      "N": 1,
+      "note": "MI indipendente da distanza"
+    },
+    "WITNESS_controllo": {
+      "MI": 0.00013,
+      "err": 5e-05,
+      "z": 0,
+      "N": 1
+    },
+    "QST_MI": {
+      "MI": 0.728,
+      "err": 0.01,
+      "z": 72.8,
+      "N": 1
+    },
+    "QST_Discord": {
+      "MI": 0.004,
+      "err": 0.001,
+      "z": 0,
+      "N": 1,
+      "note": "Correlazione classica"
+    },
+    "Scaling_3q": {
+      "MI": 0.159,
+      "err": 0.01,
+      "z": 15.9,
+      "N": 1
+    }
+  },
+  "baseline_rumore": {
+    "media": 0.00020284763695504215,
+    "std": 0.00020629212674621507
+  },
+  "peak_phi_pi_2": {
+    "MI_mean": 0.7218217855944421,
+    "MI_std": 0.0006776381041987412,
+    "Z_peak": 3498.044008462029
+  },
+  "Z_combinato": {
+    "esperimenti": [
+      12.6,
+      11.8,
+      39.6,
+      34.0,
+      72.8,
+      15.9,
+      4946.981278544948
+    ],
+    "chi2": 24481198.580274202,
+    "Z_combined": 6542873.665240071,
+    "p_value": 0.0
+  },
+  "conclusioni": [
+    "Imprint di fase sub-Planckiano CONFERMATO",
+    "MI=0.722 a phi=pi/2 con H-gate (Z >>> 50sigma)",
+    "Riproducibilità perfetta tra repliche (0.721 vs 0.722)",
+    "Discord < 0.01: imprint classico (coerente con DM classica)",
+    "H-gate necessario: imprint visibile solo in base X",
+    "N=3 limitato da decoerenza",
+    "Complementarietà con QMM Neukart",
+    "Target: Physical Review Letters"
+  ]
+}

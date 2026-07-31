@@ -1,0 +1,112 @@
+[
+  {
+    "rank": 1,
+    "name": "φ-scan con echo (compensazione quasi-static)",
+    "circuit_type": "PHI_ECHO",
+    "n_qubits": 2,
+    "n_circuits": 34,
+    "shares": 8192,
+    "prediction": "MI_echo(φ) = MI_noecho(φ) → imprint non è decoerenza",
+    "description": "Applica pulse echo (π pulse a metà delay) durante φ-scan. Se l'imprint è in cella, echo NON recupera decoerenza di fase.",
+    "reasoning": "Echo recupera T2* da rumore 1/f MA non recupera imprint in cella esterna."
+  },
+  {
+    "rank": 2,
+    "name": "Matrice di densità dell'imprint (QST)",
+    "circuit_type": "QST_PASM",
+    "n_qubits": 2,
+    "n_circuits": 36,
+    "shares": 4096,
+    "prediction": "ρ_shared = |ψ_φ⟩⟨ψ_φ| con |ψ_φ⟩ = (|00⟩ + e^{iφ}|11⟩)/√2",
+    "description": "Tomografia di stato quantistico su 2 qubit dopo CPhase condiviso. Ricostruisci ρ_shared e ρ_separate. Calcola fedeltà vs atteso.",
+    "reasoning": "QST rivela struttura completa dell'imprint, non solo MI."
+  },
+  {
+    "rank": 3,
+    "name": "Topologia: heavy-hex vs linea",
+    "circuit_type": "PASM_TOPOLOGY",
+    "n_qubits": 2,
+    "n_circuits": 4,
+    "shares": 8192,
+    "prediction": "MI_adiacenti ≈ MI_via_SWAP → imprint è nel gate",
+    "description": "PASM su qubit con connessione diretta (adiacenti) vs salto ionico (via SWAP). Confronta MI.",
+    "reasoning": "Se imprint è nel gate CPhase, topologia non conta. Se è nella cella, la geometria della connessione conta."
+  },
+  {
+    "rank": 4,
+    "name": "Re-imprinting ciclico",
+    "circuit_type": "QMM_CYCLE",
+    "n_qubits": 3,
+    "n_circuits": 6,
+    "shares": 4096,
+    "prediction": "MI decresce dopo N>3 cicli (saturazione cella)",
+    "description": "Ciclo imprint → lettura → re-imprint su stessi qubit. Verifica se l'imprint si accumula o si risatura.",
+    "reasoning": "Cella finita → dopo N imprint, saturazione → MI diminuisce."
+  },
+  {
+    "rank": 5,
+    "name": "PASM su Heron r2 vs r3 (confronto)",
+    "circuit_type": "PASM_CROSS",
+    "n_qubits": 2,
+    "n_circuits": 2,
+    "shares": 8192,
+    "prediction": "MI_r3 ≈ MI_r2 → imprint indipendente da T2",
+    "description": "Stesso esperimento PASM su ibm_marrakesh (r2) e ibm_aachen (r3). Il T2 maggiore (250μs) cambia MI?",
+    "reasoning": "Se MI dipende da T2, l'imprint è nel qubit. Se è costante, è nella cella."
+  },
+  {
+    "rank": 6,
+    "name": "φ-scan con risoluzione fine (0→2π, 33 punti)",
+    "circuit_type": "PHI_FINE",
+    "n_qubits": 2,
+    "n_circuits": 33,
+    "shares": 8192,
+    "prediction": "MI(φ) = a·sin²(φ/2) + b·sin²(φ) + c·sin²(3φ/2)",
+    "description": "Raddoppia la risoluzione del φ-scan. Cerca struttura fine in MI(φ) oltre sin²(φ/2).",
+    "reasoning": "Imprint sub-Planckiano potrebbe mostrare armoniche superiori in MI(φ)."
+  },
+  {
+    "rank": 7,
+    "name": "φ-scan differenziale (dMI/dφ)",
+    "circuit_type": "PHI_DIFF",
+    "n_qubits": 2,
+    "n_circuits": 33,
+    "shares": 8192,
+    "prediction": "dMI/dφ mostra struttura a gradini se cella è finita",
+    "description": "Calcola derivata MI(φ) da 33 punti. Cerca discontinuità o gradini che indicherebbero cella di memoria discreta.",
+    "reasoning": "Cella finita → MI(φ) quantizzata → dMI/dφ ha gradini."
+  },
+  {
+    "rank": 8,
+    "name": "Perturbazione termica dell'imprint",
+    "circuit_type": "PASM_NOISE",
+    "n_qubits": 2,
+    "n_circuits": 4,
+    "shares": 8192,
+    "prediction": "MI rumore/MI_teor > fedeltà rumore/fedeltà_teor",
+    "description": "Inserisci gate rumoroso (RX con errore) tra imprint e lettura. L'imprint resiste al rumore meglio di uno stato entangled puro?",
+    "reasoning": "Imprint in cella esterna → immune a rumore locale sul qubit."
+  },
+  {
+    "rank": 9,
+    "name": "Distanza fisica tra qubit condivisi",
+    "circuit_type": "PASM_DIST",
+    "n_qubits": 4,
+    "n_circuits": 6,
+    "shares": 8192,
+    "prediction": "MI costante per ogni distanza (imprint locale) o MI ∝ 1/r (matrice)",
+    "description": "PASM su coppie di qubit a distanze diverse (adiacenti, saltando 1, saltando 2). MI decade con distanza?",
+    "reasoning": "Se imprint è locale (stessa cella), MI indipendente da distanza. Se è nella matrice, MI decade con distanza."
+  },
+  {
+    "rank": 10,
+    "name": "Scala dell'imprint: da 2 a 6 qubit",
+    "circuit_type": "PASM_SCALE",
+    "n_qubits": 6,
+    "n_circuits": 10,
+    "shares": 4096,
+    "prediction": "MI(N) scaling lineare supporta modello aggregativo",
+    "description": "PASM con 2,3,4,5,6 qubit condivisi. Misura MI scaling con N.",
+    "reasoning": "Dark matter come imprint aggregato: MI(N) ~ N·MI(2) lineare o super-lineare?"
+  }
+]

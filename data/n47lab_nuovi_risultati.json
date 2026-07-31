@@ -1,0 +1,35 @@
+{
+  "replica_10x_pasm": {
+    "avg_mi_shared": 0.046506,
+    "std_mi_shared": 0.003708,
+    "avg_mi_separate": 6.2e-05,
+    "std_mi_separate": 5.4e-05,
+    "delta_mi": 0.046444,
+    "z_score": 39.6,
+    "n_repliche": 10,
+    "n_shared_dominanti": 10,
+    "backend": "ibm_kingston"
+  },
+  "pasm_scaling": {
+    "2q": {
+      "shared": 0.05639663173094041,
+      "separate": 0.0003081471038292125
+    },
+    "3q": {
+      "shared": 0.15877442806565134,
+      "separate": 0.001134857775319559
+    },
+    "4q": {
+      "shared": 0.12708236239415144,
+      "separate": 1.2183506534472381e-05
+    },
+    "5q": {
+      "shared": 0.1232432976877205,
+      "separate": 1.2961971515289467e-05
+    },
+    "6q": {
+      "shared": 0.12275613796576053,
+      "separate": 0.00028902812412323967
+    }
+  }
+}
