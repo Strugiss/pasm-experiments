@@ -2,13 +2,13 @@
 N47Lab — Relancio 3 esperimenti cancellati su ibm_kingston (API2)
 QST/DISCORD + PASM_SCALE (4 circ, 6q) + WITNESS (10 circ)
 """
-import sys, math, json, time
+import sys, math, json, time, os
 sys.stdout.reconfigure(encoding='utf-8')
 from qiskit import QuantumCircuit
 from qiskit_ibm_runtime import QiskitRuntimeService, SamplerV2
 from qiskit.transpiler.preset_passmanagers import generate_preset_pass_manager
 
-API2 = "LmFkNotDbS5kNFuRwjnUDAN5RRuq2VwTz9l9aMtUr0YB"
+API2 = os.getenv('IBM_OPEN', '')
 BACKEND = "ibm_kingston"
 
 def pasm_nqubit_circuit(n, phi_denom=4, shared=True):

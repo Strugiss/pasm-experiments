@@ -1,7 +1,7 @@
 """
 N47Lab — Esperimento PASM correttivo con H gate prima della misura
 """
-import sys, time
+import sys, time, os
 sys.stdout.reconfigure(encoding='utf-8')
 import numpy as np
 from numpy import pi, cos, log2
@@ -9,7 +9,7 @@ from qiskit import QuantumCircuit
 from qiskit_ibm_runtime import QiskitRuntimeService, SamplerV2
 from qiskit.transpiler.preset_passmanagers import generate_preset_pass_manager
 
-API2 = 'LmFkNotDbS5kNFuRwjnUDAN5RRuq2VwTz9l9aMtUr0YB'
+API2 = os.getenv('IBM_OPEN', '')
 BACKEND = 'ibm_kingston'
 SHOTS = 8192
 

@@ -1,12 +1,12 @@
 """
 N47Lab — Quantum Discord from QST data (MLE-corrected)
 """
-import sys, math, json
+import sys, math, json, os
 sys.stdout.reconfigure(encoding='utf-8')
 from qiskit_ibm_runtime import QiskitRuntimeService
 import numpy as np
 
-API2 = 'LmFkNotDbS5kNFuRwjnUDAN5RRuq2VwTz9l9aMtUr0YB'
+API2 = os.getenv('IBM_OPEN', '')
 
 def entropy(mat):
     ev = np.linalg.eigvalsh(mat)
