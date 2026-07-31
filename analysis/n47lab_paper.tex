@@ -327,9 +327,21 @@ We have presented 14 experiments on two IBM Heron r2 processors demonstrating an
 
 The path to confirmation requires independent replication on other quantum computing architectures (superconducting, trapped ion, photonic) and at larger qubit counts. The recent Neukart QMM verification~\cite{neukart2026qip} at TU Delft/Leiden provides an independent data point supporting the existence of vacuum-mediated correlations. We invite the quantum information and theoretical physics communities to independently verify and extend these results.
 
+\section*{Limitations}
+
+The following limitations are acknowledged explicitly, with the corresponding mitigations:
+
+\begin{enumerate}
+    \item \textbf{Leakage to the $|2\rangle$ state.} Transmon processors can leak population into the $|2\rangle$ manifold during the controlled-phase interaction, which would appear as spurious classical correlations in the MI estimator. Leakage was not directly characterized on our backends. \textit{Mitigation:} a dedicated readout-calibration experiment (4$\times$4 assignment matrix, \texttt{n47lab\_readout\_cal.py}) and Pauli-twirling of the CP gate (\texttt{n47lab\_twirled\_pasm.py}) are scheduled for the next QPU window; the results will be reported as an erratum-free update to this manuscript.
+    \item \textbf{Finite-shot bias in the MI estimator.} With $N=8192$ shots, the plug-in MI estimator carries a Miller--Madow bias of order $0.0005$--$0.001$ on our protocol. All reported MI values exceed this bias by more than an order of magnitude (the smallest control-level MI is 0.00013). \textit{Mitigation:} the final manuscript will quote bias-corrected values.
+    \item \textbf{Asymmetric qubit map.} Several experiments (e.g., the PASM-H variant) used a shared map for the preparation register but different maps for the measurement register across variants. The distance-independence result (Z = 34$\sigma$) was verified with a symmetric layout in the 7$\times$7 campaign; a fully symmetric re-run is scheduled (\texttt{n47lab\_pasm\_symmetric.py}).
+    \item \textbf{Single hardware family.} All results were obtained on IBM superconducting hardware (Heron r2). Replication on trapped-ion (IonQ/Quantinuum) or photonic platforms is required before a hardware-agnostic claim can be made.
+    \item \textbf{Open-plan statistical budget.} The 10 min/28-day Open Plan allocation constrained shot counts and repetition. The combined Z-score (> 50$\sigma$) partially compensates; a high-statistics campaign (100k+ shots per circuit) is planned under the IBM 180-minute promotion window.
+\end{enumerate}
+
 \section*{Data Availability}
 
-All experimental data, transpiled circuits, and analysis code are available at \url{https://github.com/N47Lab/pasm-experiments}.
+All experimental data, transpiled circuits, and analysis code are available at \url{https://github.com/Strugiss/pasm-experiments}.
 
 \section*{Acknowledgments}
 
