@@ -392,7 +392,9 @@
           "001": 638,
           "100": 425
         },
-        "MI": 0.504874
+        "MI": 0.504874,
+        "MI_I3": 0.36929,
+        "nota_metrica": "Errata-corrige 2026-08-03: 'MI' dichiarata calcolata con metrica non specificata e incoerente tra i punti; la MI multi-information I3 (metrica del paper, 0.369±0.012) ricalcolata dai counts vale 0.36929. Vedi analysis/reports/n47lab_mm_bootstrap_report.json."
       },
       {
         "index": 1,
@@ -404,7 +406,9 @@
           "001": 9,
           "110": 7
         },
-        "MI": 0.502444
+        "MI": 0.00007,
+        "MI_originale_dichiarata": 0.502444,
+        "nota_metrica": "Errata-corrige 2026-08-03: valore 'MI' originale 0.502444 ERRATO (bug di metrica: coincidente con l'entropia marginale di 1 bit). La I3 ricalcolata dai counts vale 0.00007: il controllo e' pulito. Vedi analysis/reports/n47lab_mm_bootstrap_report.json."
       }
     ]
   },

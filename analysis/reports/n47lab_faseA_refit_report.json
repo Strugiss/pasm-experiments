@@ -1,0 +1,109 @@
+{
+  "chiusura_per_punto": {
+    "chi2_per_punto": [
+      0.08,
+      3.38,
+      7.49,
+      13.14,
+      1.88,
+      3.42,
+      7.38,
+      7.53,
+      12.52,
+      37.91,
+      17.07,
+      52.47,
+      29.48,
+      57.08,
+      56.21,
+      28.99,
+      37.75
+    ],
+    "rhat_per_punto": [
+      0.001,
+      0.00211,
+      -0.0006,
+      0.00204,
+      0.00945,
+      0.00948,
+      0.01173,
+      0.00227,
+      0.00927,
+      -0.00087,
+      0.01688,
+      0.02377,
+      0.00703,
+      0.0181,
+      0.01691,
+      0.02753,
+      0.0297
+    ],
+    "chi2_totale": 373.79,
+    "dof": 51,
+    "p_value": 1.1424017217650777e-50,
+    "segni_tail": "7/9 positivi",
+    "p_binomiale_9": 0.08984375,
+    "verdetto": "ARTEFATTO (pattern -3 violato per singolo punto)"
+  },
+  "jackknife_fit": {
+    "d_echo": {
+      "mean": 0.0469,
+      "std": 0.0035,
+      "min": 0.03827,
+      "max": 0.05473
+    },
+    "d_noecho": {
+      "mean": -0.07066,
+      "std": 0.00569,
+      "min": -0.08607,
+      "max": -0.06119
+    },
+    "Delta_d": {
+      "mean": 0.11757,
+      "std": 0.00668,
+      "min": 0.10369,
+      "max": 0.13273
+    },
+    "A_echo": {
+      "mean": 0.91196,
+      "std": 0.00627,
+      "min": 0.89304,
+      "max": 0.92263
+    },
+    "A_noecho": {
+      "mean": 0.80996,
+      "std": 0.00865,
+      "min": 0.7862,
+      "max": 0.82107
+    }
+  },
+  "fit_full": {
+    "echo": {
+      "A": 0.91193,
+      "delta": 0.04693,
+      "b": 0.00146
+    },
+    "noecho": {
+      "A": 0.81001,
+      "delta": -0.07055,
+      "b": -0.00304
+    }
+  },
+  "audit_bilancio": {
+    "validi": [
+      "T15 (DELTA-NO-GO)",
+      "T17 (DIFF-COMUNE)",
+      "T18 (AMPIEZZA)",
+      "T21 (WILKS MI)"
+    ],
+    "esclusi_parziali": [
+      "T16 (metanalisi 13job: dati solo aggregati)",
+      "T20 (pasm_3q a 2 punti)"
+    ],
+    "in_rivalidazione": [
+      "T19 (chiusura): rifatto per singolo punto in questo report"
+    ],
+    "bilancio": "4 validi : 1 rivalidato : 2 parziali esclusi (non piu' 6:1)",
+    "nota": "Il T19 rifatto per singolo punto non usa parametri condivisi: dof 3 per punto, chi2 totale ~ chi2(51)."
+  }
+}

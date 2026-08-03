@@ -1,0 +1,205 @@
+{
+  "scaletta_raw": {
+    "N": [
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0
+    ],
+    "MI_shared": [
+      0.05639663173094041,
+      0.15877442806565134,
+      0.12708236239415144,
+      0.1232432976877205,
+      0.12275613796576053
+    ],
+    "MI_separate": [
+      0.0003081471038292125,
+      0.001134857775319559,
+      1.2183506534472381e-05,
+      1.2961971515289467e-05,
+      0.00028902812412323967
+    ],
+    "MI_per_coppia": [
+      0.05639663173094041,
+      0.052924809355217116,
+      0.021180393732358572,
+      0.01232432976877205,
+      0.008183742531050702
+    ],
+    "MI_per_qubit": [
+      0.028198315865470204,
+      0.052924809355217116,
+      0.03177059059853786,
+      0.0246486595375441,
+      0.020459356327626754
+    ]
+  },
+  "modelli": {
+    "M1_estensivo_MI=aN": {
+      "a": 0.025140622826677363,
+      "yhat": [
+        0.05028124565335473,
+        0.07542186848003209,
+        0.10056249130670945,
+        0.1257031141333868,
+        0.15084373696006417
+      ],
+      "chi2": 204.53610755951243,
+      "dof": 4,
+      "chi2_red": 51.13402688987811
+    },
+    "M2_pairwise_MI=bC(N,2)": {
+      "b": 0.01101371770352423,
+      "yhat": [
+        0.01101371770352423,
+        0.03304115311057269,
+        0.06608230622114537,
+        0.1101371770352423,
+        0.16520576555286345
+      ],
+      "chi2": 731.6606954564462,
+      "dof": 4,
+      "chi2_red": 182.91517386411155
+    },
+    "M3_plateau(4-6q)": {
+      "mean_plateau": 0.12436059934921083,
+      "std_points": 0.0019348258669758625,
+      "chi2_interno": 0.7019158379097933,
+      "dof": 2,
+      "delta_2q": -0.06796396761827042,
+      "z_2q": -16.990991904567604,
+      "delta_3q": 0.03441382871644051,
+      "z_3q": 4.301728589555064
+    },
+    "M4_saturazione": {
+      "m": 0.14848524079498784,
+      "lambda": 2.7359832717934984,
+      "yhat": [
+        0.07700029042106309,
+        0.09888539957391672,
+        0.11407038513254562,
+        0.1246064891476221,
+        0.13191696615715925
+      ],
+      "chi2": 98.51720632532745,
+      "dof": 3,
+      "chi2_red": 32.83906877510915
+    },
+    "M5_quadratico_aN+bN2": {
+      "a": 0.04785523733597457,
+      "b": -0.0045050426632495385,
+      "yhat": [
+        0.07769030401895098,
+        0.10302032803867786,
+        0.11934026673190566,
+        0.1266501200986344,
+        0.12494988813886401
+      ],
+      "chi2": 81.68183881053076,
+      "dof": 3,
+      "chi2_red": 27.227279603510254
+    }
+  },
+  "outlier_3q": {
+    "z_3q_vs_plateau": 4.301728589555064,
+    "interpretazione": "Picco 3q statisticamente reale (z~4.4 con sigma=0.008); non e' rumore di campionamento."
+  },
+  "mm_floor_shots8192": {
+    "k=2": 8.805511724175802e-05,
+    "k=3": 0.00017611023448351604,
+    "k=4": 0.0002641653517252741,
+    "k=5": 0.0003522204689670321,
+    "k=6": 0.0004402755862087901,
+    "k=7": 0.0005283307034505482,
+    "k=8": 0.0006163858206923062
+  },
+  "mm_controlli": {
+    "tabella": [
+      {
+        "misura": "WITNESS (controllo PASM, MI=0.00013)",
+        "MI": 0.00013,
+        "floor_k2": 8.805511724175802e-05,
+        "floor_k4": 0.0002641653517252741,
+        "esito": "ZONA GRIGIA (k=2 sopra, k>=3 sotto)"
+      },
+      {
+        "misura": "N2_0_H_c0 (controllo, rumore_fondo)",
+        "MI": 6.5e-05,
+        "floor_k2": 8.805511724175802e-05,
+        "floor_k4": 0.0002641653517252741,
+        "esito": "SOTTO floor MM (indistinguibile da bias)"
+      },
+      {
+        "misura": "phi_echo_idx00 (punto zero, rumore_fondo)",
+        "MI": 5.43e-06,
+        "floor_k2": 8.805511724175802e-05,
+        "floor_k4": 0.0002641653517252741,
+        "esito": "SOTTO floor MM (indistinguibile da bias)"
+      },
+      {
+        "misura": "N2_pi_H_c0 (controllo phi=pi, rumore_fondo)",
+        "MI": 0.00029,
+        "floor_k2": 8.805511724175802e-05,
+        "floor_k4": 0.0002641653517252741,
+        "esito": "SOPRA floor MM (risolvibile)"
+      },
+      {
+        "misura": "separate 2q (scaletta)",
+        "MI": 0.0003081471038292125,
+        "floor_k2": 8.805511724175802e-05,
+        "floor_k4": 0.0002641653517252741,
+        "esito": "SOPRA floor MM (risolvibile)"
+      },
+      {
+        "misura": "separate 6q (scaletta)",
+        "MI": 0.00028902812412323967,
+        "floor_k2": 8.805511724175802e-05,
+        "floor_k4": 0.0002641653517252741,
+        "esito": "SOPRA floor MM (risolvibile)"
+      }
+    ],
+    "nota": [
+      "Valori <= ~1e-4 a 8192 shots sono al/",
+      "sotto la risoluzione del plug-in MI."
+    ]
+  },
+  "mm_phi_echo": {
+    "k_medi_stati_occupati": 3.9411764705882355,
+    "k_min": 3,
+    "k_max": 4,
+    "floor_medio": 0.00025898563894634715,
+    "nota": "floor medio del phi_echo (tutti i 34 punti, 8192 shots)"
+  },
+  "autocorrelazione_phi_echo": {
+    "n_circuiti": 34,
+    "AC": {
+      "1": 0.8885817362650078,
+      "2": 0.8486001766497696,
+      "3": 0.6896586483452996,
+      "4": 0.5952368648609894,
+      "5": 0.40705836425456465,
+      "6": 0.2863193838837507,
+      "7": 0.09185467083616582,
+      "8": -0.020889059426156677
+    },
+    "z_AC": {
+      "1": 5.181277358799375,
+      "2": 4.948146808002031,
+      "3": 4.021366402365473,
+      "4": 3.470797525042962,
+      "5": 2.3735377403627824,
+      "6": 1.6695145539878953,
+      "7": 0.5356001669625324,
+      "8": -0.12180310064248437
+    }
+  },
+  "verdetto": {
+    "struttura": "Non monotona: 2q (0.056) < plateau 4-6q (~0.123) < 3q (0.159). Nessun modello estensivo/pairwise/saturazione descrive i 5 punti.",
+    "plateau_4_6q": "autocoerente (chi2 ridotto ~1)",
+    "picco_3q": "outlier positivo reale (z>4)",
+    "compatibilita_miller_madow": "Segnali PASM 0.056-0.159: 500-1500x sopra il floor. WITNESS 0.00013: al floor (k=2 lo tiene sopra, k>=3 lo porta sotto) -> il 'controllo a zero' non e' risolto sotto il floor; i controlli ~1e-5 sono sotto il floor.",
+    "limitazioni": "Punti scaletta da run diversi (backend/giorni diversi, non dichiarati nel file); sigma uniforme 0.004 assunto (0.008 per 3q); ampiezza 'shared' ambigua (MI congiunta o media a coppie) -> non risolvibile dai 17 file scaricati."
+  }
+}
