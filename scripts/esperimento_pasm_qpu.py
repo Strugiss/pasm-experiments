@@ -4,12 +4,31 @@ Protocollo definitivo: CPhase(phi=pi/2) su memoria condivisa
 Confronto: shared vs separate
 Metrica: Mutua Informazione I(field0:field2)
 """
+import os
 import numpy as np
 from qiskit import QuantumCircuit
 from qiskit_ibm_runtime import QiskitRuntimeService, SamplerV2
 
-API_TOKEN = "***REMOVED***"
-CRN = "crn:v1:bluemix:public:quantum-computing:us-east:a/4bda7b5aa03c4d579472f45d63c1bec2:98f81afa-1cb0-4a63-a812-a9d479468a5a::"
+def _leggi_env():
+    """Legge il .env N47Lab (temp opencode) senza esporre segreti."""
+    env = {}
+    for base in (
+        r"C:\Users\Utente\AppData\Local\Temp\opencode",
+        os.path.dirname(os.path.abspath(__file__)),
+    ):
+        p = os.path.join(base, ".env")
+        if os.path.exists(p):
+            for line in open(p, encoding="utf-8"):
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    k, v = line.split("=", 1)
+                    env[k.strip()] = v.strip().strip('"').strip("'")
+            break
+    return env
+
+_env = _leggi_env()
+API_TOKEN = _env.get("IBM_API_TOKEN_1") or _env.get("IBM_API_TOKEN") or ""
+CRN = _env.get("IBM_CRN_1") or _env.get("IBM_CRN") or ""
 PHI = np.pi / 2
 SHOTS = 8192
 

@@ -38,7 +38,7 @@
 \maketitle
 
 \begin{abstract}
-We present experimental evidence from 14 independent quantum processor unit (QPU) experiments on two IBM Heron r2 processors (ibm\_marrakesh and ibm\_kingston), collectively demonstrating the existence of a shared phase memory that cannot be attributed to known noise sources, crosstalk, or measurement errors. The protocol---Phase-Anchored State Multiplexing (PASM)---prepares $N$ qubits in identical phase states via parallel Hadamard gates followed by a controlled-phase interaction, producing mutual information (MI) values up to $0.369 \pm 0.012$ (3-qubit) and $0.159 \pm 0.008$ (2-qubit pairwise) that scale with $N$. The effect is robust across 10 independent replicas (mean MI $= 0.0465 \pm 0.0037$, $Z = 39.6\sigma$ on a second processor), independent of physical qubit distance ($Z = 34\sigma$), and produces a combined $Z$-score exceeding $50\sigma$ across all experiments. Quantum state tomography (QST) confirms the discord remains classical ($< 0.01$), distinguishing this effect from conventional entanglement. A control with entanglement witness circuits yields null results ($\text{MI} \sim 10^{-4}$), ruling out circuit-induced entanglement. Comparison with the Neukart Quantum Memory Matrix model (Quantum Information Processing, 2026) shows consistency with a geometric phase memory of sub-Planckian origin. We interpret these results within a sub-Planckian matrix framework, where the vacuum state stores phase information accessible only to identically-prepared quantum systems---a mechanism we propose as a candidate for the dark matter sector.
+We present experimental evidence from 14 independent quantum processor unit (QPU) experiments on two IBM Heron r2 processors (ibm\_marrakesh and ibm\_kingston), collectively demonstrating the existence of a shared phase memory that cannot be attributed to known noise sources, crosstalk, or measurement errors. The protocol---Phase-Anchored State Multiplexing (PASM)---prepares $N$ qubits in identical phase states via parallel Hadamard gates followed by a controlled-phase interaction, producing mutual information (MI) values up to $0.369 \pm 0.012$ (3-qubit) and $0.159 \pm 0.008$ (2-qubit pairwise) that scale with $N$. The effect is robust across 10 independent replicas (mean MI $= 0.0465 \pm 0.0037$, $Z = 39.6\sigma$ on a second processor), independent of physical qubit distance ($Z = 34\sigma$), and produces a combined $Z$-score exceeding $50\sigma$ across all experiments. Quantum state tomography (QST) confirms the discord remains classical ($< 0.01$), distinguishing this effect from conventional entanglement. A control with entanglement witness circuits yields MI $= 0.00013 \pm 0.0001$, statistically indistinguishable from zero---below the Miller--Madow finite-shot floor of $\sim 2.6\times10^{-4}$ bit at 8192 shots---ruling out circuit-induced entanglement. Comparison with the Neukart Quantum Memory Matrix model (Quantum Information Processing, 2026) shows consistency with a geometric phase memory of sub-Planckian origin. We interpret these results within a sub-Planckian matrix framework, where the vacuum state stores phase information accessible only to identically-prepared quantum systems---a mechanism we propose as a candidate for the dark matter sector.
 
 \vspace{0.3cm}
 \noindent\textbf{Keywords:} quantum memory, dark matter, IBM quantum processor, phase correlation, sub-Planckian physics, mutual information, quantum discord
@@ -233,7 +233,7 @@ Deliberate noise injection (Experiment~7) via amplitude damping channels reduces
 Several controls confirm that the effect is not an artifact of circuit design or hardware:
 
 \begin{itemize}
-\item \textbf{Entanglement witness (Exp.~13):} Replacing the PASM preparation with a witness circuit (H-CP-H$_{\text{single}}$) yields MI $= 0.00013 \pm 0.0001$, demonstrating that the effect requires \textit{both} qubits prepared in the shared phase state.
+\item \textbf{Entanglement witness (Exp.~13):} Replacing the PASM preparation with a witness circuit (H-CP-H$_{\text{single}}$) yields MI $= 0.00013 \pm 0.0001$, which is statistically indistinguishable from zero (it lies below the Miller--Madow finite-shot floor of $\sim 2.6\times10^{-4}$ bit at 8192 shots), demonstrating that the effect requires \textit{both} qubits prepared in the shared phase state.
 \item \textbf{Distance independence (Exp.~5):} Varying the physical distance between qubits on the chip (3 distinct pairings) produces MI $= 0.0600 \pm 0.003$ independent of separation ($Z = 34\sigma$ against null), ruling out nearest-neighbor crosstalk.
 \item \textbf{Single-qubit phase control:} Replacing the shared CP gate with independent $P(\phi/N)$ gates (the ``separate'' protocol in all experiments) consistently yields MI $< 0.001$.
 \item \textbf{Quantum state tomography (QST):} Full 2-qubit tomography of the PASM state yields MI $= 0.728$ but quantum discord $< 0.01$, conclusively demonstrating that the correlation is classical rather than quantum in nature.
@@ -260,11 +260,13 @@ We consider and exclude the following alternative explanations:
 
 The Neukart Quantum Memory Matrix (QMM) model~\cite{neukart2025,neukart2026qip} predicts that spacetime events store information in a Planck-scale memory structure, producing measurable correlations between quantum systems that share a causal connection. The experimental verification~\cite{neukart2026qip} reported retrieval fidelities of $0.732 \pm 0.012$ (three-qubit baseline) and $0.704 \pm 0.014$ (five-qubit dual-cycle) on IBM QPU hardware, with field--output mutual information up to $0.56$ bits, establishing unitary reversibility well beyond statistical noise. Our PASM protocol differs from the QMM implementation in its use of phase-anchored state preparation rather than direct memory read/write operations, yet the two approaches share the core prediction that identically-prepared qubits exhibit anomalous correlations.
 
-The PASM-H result (MI $= 0.722$) provides a significantly larger signal than the QMM imprint--retrieval signatures ($0.56$ bits), suggesting that the phase-anchored preparation is a more efficient probe of the hypothesized memory structure. The classical nature of the correlation (discord $< 0.01$) further distinguishes PASM from QMM, which predicts a mixture of quantum and classical memory effects. Notably, the QMM experimental verification explicitly identifies full state tomography as the next step toward verifying phase-coherent state recovery~\cite{neukart2026qip}; the QST analysis reported here (Section~\ref{sec:methods}) closes exactly that gap, demonstrating that the shared memory is measurable, classical in nature, and distinct from conventional entanglement. In parallel, the QMM framework has been extended toward error suppression on NISQ devices~\cite{neukart2026qec}, further motivating hardware-level probes of vacuum memory such as PASM. More recently, the QMM framework has been extended to cosmology: dark matter emerges as the clustering of imprint clumps in the geometry-information duality~\cite{neukart2025dm}, while dark energy arises from the saturation of Planck-cell Hilbert capacity~\cite{neukart2025de}. In this extended picture, dark matter and dark energy are two phases---gradient and potential---of the same information field, a result consistent with our interpretation of the sub-Planckian matrix as the dark matter sector.
+The PASM-H result (MI $= 0.722$) provides a significantly larger signal than the QMM imprint--retrieval signatures ($0.56$ bits), suggesting that the phase-anchored preparation is a more efficient probe of the hypothesized memory structure. The classical nature of the correlation (discord $< 0.01$) further distinguishes PASM from QMM, which predicts a mixture of quantum and classical memory effects. Notably, the QMM experimental verification explicitly identifies full state tomography as the next step toward verifying phase-coherent state recovery~\cite{neukart2026qip}; the QST analysis reported here (Section~\ref{sec:methods}) closes exactly that gap, demonstrating that the shared memory is measurable, classical in nature, and distinct from conventional entanglement. In parallel, the QMM framework has been extended toward error suppression on NISQ devices~\cite{neukart2026qec}, further motivating hardware-level probes of vacuum memory such as PASM. More recently, the QMM framework has been extended to cosmology: dark matter emerges as the clustering of imprint clumps in the geometry-information duality~\cite{neukart2025dm}, while dark energy arises from the saturation of Planck-cell Hilbert capacity~\cite{neukart2025de}. The cyclic extension of QMM cosmology~\cite{neukart2025cycle} further infers $N_{\mathrm{past}} = 3.6 \pm 0.4$ completed cycles and a cumulative age $t_{\mathrm{QMM}} = 62.0 \pm 2.5$ Gyr, imprint-entropy gradients inherited across bounces provide a natural channel for primordial black-hole formation~\cite{neukart2025pbh}, and the embedding of electromagnetism into the finite-information space--time framework~\cite{neukart2026em} completes the QMM sector across all fundamental interactions. In this extended picture, dark matter and dark energy are two phases---gradient and potential---of the same information field, a result consistent with our interpretation of the sub-Planckian matrix as the dark matter sector.
 
 \subsection{Comparison with Other Dark Matter Candidates}
 
-Recent developments in dark matter direct detection include transition-edge single-photon sensors~\cite{tes2025}, which set new limits on dark matter interactions with electrons and nucleons below the MeV scale, and the AION atom interferometer~\cite{aion2025} for ultralight DM searches. CERN studies~\cite{cern2025} constrain ultralight dark matter candidates in the $10^{-22}$--$10^{-3}$ eV range using accelerator-based techniques. Our sub-Planckian matrix proposal occupies a distinct parameter space: it is not a particle candidate but a geometric phase memory of the vacuum, coupling to quantum phase rather than energy or momentum. As such, it is not constrained by existing direct detection limits.
+Recent developments in dark matter direct detection include transition-edge single-photon sensors~\cite{tes2025}, which set new limits on dark matter interactions with electrons and nucleons below the MeV scale, and the AION atom interferometer~\cite{aion2025} for ultralight DM searches. Space-time separated atomic clocks and cavities~\cite{cern2025} constrain the coupling of ultralight dark matter to electrons in the $10^{-19}$--$2\times10^{-15}$ eV range. Our sub-Planckian matrix proposal occupies a distinct parameter space: it is not a particle candidate but a geometric phase memory of the vacuum, coupling to quantum phase rather than energy or momentum. As such, it is not constrained by existing direct detection limits.
+
+We explicitly acknowledge the provenance of the unifying picture adopted in this work. The proposal that dark matter and dark energy are two limits (gradient and potential) of a single information field was previously advanced by Neukart \textit{et al.}~\cite{neukart2025de} within the Quantum Memory Matrix framework, and the idea that dark matter is a metastable allotrope of the space--time network arises naturally in the combinatorial quantum gravity of Trugenberger~\cite{trugenberger2024,trugenberger2025}. The original contribution of the present work is therefore not the theoretical identification of an information-theoretic dark sector, but its experimental probe: to our knowledge, no other group has tested the associated phase-correlation phenomenology on programmable quantum hardware at the statistical level reported here (combined $Z > 50\sigma$). We also address the popular-science critique (Hossenfelder~\cite{hossenfelder2025}; fact-check by Science Reader, September 2025) that QPU experiments are analogue simulations of well-known quantum mechanics rather than direct tests of space--time memory. We agree that a three-qubit circuit cannot probe Planck-scale physics directly; PASM is designed instead to test the common phenomenological prediction of this paradigm---anomalous phase correlations between identically prepared systems---which is falsifiable and reproducible on any quantum platform. To date, no formal peer-reviewed critique of the QMM or of the PASM protocol exists.
 
 Three independent 2026 results point to quantum phase as the emerging detection channel for non-particle dark matter, in direct convergence with the present proposal. Paranjape \textit{et al.}~\cite{recoherence2026} show that the local solar gravitational potential forms a basin for ultralight dark matter with discrete energy levels, introducing a generalized coherence time and a recoherence phenomenon in which a subcomponent exhibits a formally divergent coherence time---challenging the conventional picture that decoherence is irreversible. Ma and Sheng~\cite{ma2026geometric} propose a quantum sensing protocol for qubit--oscillator systems that encodes the dark matter signal in a geometric phase, surpassing the standard quantum limit; the same geometric-phase language underlies our $\phi$-scan result (Experiment~2), where the mutual information is modulated by the preparation phase. Finally, the AION collaboration~\cite{aion2026nature} has demonstrated a prototype differential atom interferometer in which two separated interferometers are interrogated by a common clock laser and remain sensitive under fully phase-randomized conditions---a macroscopic analogue of the phase-anchored, shared-reference interrogation at the heart of PASM. These independent lines of work indicate that the phase of the vacuum field, rather than energy or momentum alone, is becoming a central observable in dark matter searches, consistent with the sub-Planckian phase memory proposed here.
 
@@ -338,7 +340,7 @@ The following limitations are acknowledged explicitly, with the corresponding mi
 
 \begin{enumerate}
     \item \textbf{Leakage to the $|2\rangle$ state.} Transmon processors can leak population into the $|2\rangle$ manifold during the controlled-phase interaction, which would appear as spurious classical correlations in the MI estimator. Leakage was not directly characterized on our backends. \textit{Mitigation:} a dedicated readout-calibration experiment (4$\times$4 assignment matrix, \texttt{n47lab\_readout\_cal.py}) and Pauli-twirling of the CP gate (\texttt{n47lab\_twirled\_pasm.py}) are scheduled for the next QPU window; the results will be reported as an erratum-free update to this manuscript.
-    \item \textbf{Finite-shot bias in the MI estimator.} With $N=8192$ shots, the plug-in MI estimator carries a Miller--Madow bias of order $0.0005$--$0.001$ on our protocol. All reported MI values exceed this bias by more than an order of magnitude (the smallest control-level MI is 0.00013). \textit{Mitigation:} the final manuscript will quote bias-corrected values.
+    \item \textbf{Finite-shot bias in the MI estimator.} With $N=8192$ shots, the plug-in MI estimator carries a Miller--Madow finite-shot floor of $\sim 2.6\times10^{-4}$ bit (i.e., $(k-1)/(2N) = 3/(2\cdot 8192)$ nat $\simeq 2.6\times10^{-4}$ bit for $k=4$ bins). The witness control (MI $= 0.00013 \pm 0.0001$) therefore lies below this floor: the null result is proven only within the statistical resolution, not as an absolute zero. In contrast, all PASM signals exceed the floor by more than two orders of magnitude (baseline MI $= 0.0465$--$0.0628$). \textit{Mitigation:} the final manuscript will quote bias-corrected values.
     \item \textbf{Asymmetric qubit map.} Several experiments (e.g., the PASM-H variant) used a shared map for the preparation register but different maps for the measurement register across variants. The distance-independence result (Z = 34$\sigma$) was verified with a symmetric layout in the 7$\times$7 campaign; a fully symmetric re-run is scheduled (\texttt{n47lab\_pasm\_symmetric.py}).
     \item \textbf{Single hardware family.} All results were obtained on IBM superconducting hardware (Heron r2). Replication on trapped-ion (IonQ/Quantinuum) or photonic platforms is required before a hardware-agnostic claim can be made.
     \item \textbf{Open-plan statistical budget.} The 10 min/28-day Open Plan allocation constrained shot counts and repetition. The combined Z-score (> 50$\sigma$) partially compensates; a high-statistics campaign (100k+ shots per circuit) is planned under the IBM 180-minute promotion window.
@@ -402,8 +404,9 @@ DOI: 10.1002/qute.202500262.
 
 \bibitem{neukart2025dm}
 F.~Neukart, E.~Marx, and V.~Vinokur,
-``Quantum Memory Matrix applied to cosmological structure formation and dark-matter phenomenology,''
-Preprint (2025).
+``Quantum Memory Matrix framework applied to cosmological structure formation and dark matter phenomenology,''
+\textit{Physics} \textbf{8}, 49 (2026).
+DOI: 10.3390/physics8020049.
 
 \bibitem{neukart2025de}
 F.~Neukart, E.~Marx, and V.~Vinokur,
@@ -413,7 +416,7 @@ DOI: 10.3390/astronomy4030016.
 
 \bibitem{kempf2009}
 A.~Kempf,
-``Information-theoretic UV cutoff for spacetime,''
+``Information-theoretic natural ultraviolet cutoff for spacetime,''
 \textit{Phys. Rev. Lett.} \textbf{103}, 231301 (2009).
 
 \bibitem{wheeler1957}
@@ -432,14 +435,16 @@ C.~Schwemmbauer \textit{et al.},
 arXiv:2506.18982 (2025).
 
 \bibitem{aion2025}
-AION Collaboration,
-``The AION atom interferometer for ultralight dark matter,''
-\textit{J. Cosmol. Astropart. Phys.} \textbf{2025}, 010 (2025).
+L.~Badurina \textit{et al.} (AION Collaboration),
+``AION: An atom interferometer observatory and network,''
+\textit{J. Cosmol. Astropart. Phys.} \textbf{05}, 011 (2020).
+DOI: 10.1088/1475-7516/2020/05/011. arXiv:1911.11755.
 
 \bibitem{cern2025}
-CERN Ultralight DM Search,
-``Constraints on ultralight dark matter from accelerator-based techniques,''
-\textit{Phys. Rev. Lett.} \textbf{134}, 021801 (2025).
+M.~Filzinger, A.~R.~Caddell, D.~Jani, M.~Steinel, L.~Giani, N.~Huntemann, and B.~M.~Roberts,
+``Ultralight dark matter search with space-time separated atomic clocks and cavities,''
+\textit{Phys. Rev. Lett.} \textbf{134}, 031001 (2025).
+DOI: 10.1103/PhysRevLett.134.031001. arXiv:2312.13723.
 
 \bibitem{recoherence2026}
 C.~Paranjape, G.~Perez, W.~Ratzinger, and S.~Sankaranarayanan,
@@ -452,9 +457,10 @@ X.~Ma and J.~Sheng,
 arXiv:2603.23599 (2026).
 
 \bibitem{aion2026nature}
-AION Collaboration,
+C.~F.~A.~Baynham \textit{et al.} (AION Collaboration),
 ``A prototype differential atom interferometer for fundamental physics,''
-\textit{Nature} \textbf{654}, 622 (2026).
+\textit{Nature} \textbf{654}, 8119, 622--628 (2026).
+DOI: 10.1038/s41586-026-10617-1.
 
 \bibitem{ricciardi1967}
 L.~M.~Ricciardi and H.~Umezawa,
@@ -485,6 +491,42 @@ Cambridge University Press (2010).
 B.~Carr, J.~Mureika, and P.~Nicolini,
 ``Sub-Planckian black holes and the generalized uncertainty principle,''
 \textit{J. High Energy Phys.} \textbf{2015}, 052 (2015).
+
+\bibitem{neukart2025cycle}
+F.~Neukart, E.~Marx, and V.~Vinokur,
+``Counting cosmic cycles: Past big crunches, future recurrence limits, and the age of the Quantum Memory Matrix universe,''
+\textit{Entropy} \textbf{27}, 1043 (2025).
+DOI: 10.3390/e27101043.
+
+\bibitem{neukart2025pbh}
+F.~Neukart, E.~Marx, and V.~Vinokur,
+``Information wells and the emergence of primordial black holes in a cyclic quantum universe,''
+\textit{J. Cosmol. Astropart. Phys.} \textbf{2025}, 021 (2025).
+DOI: 10.1088/1475-7516/2025/10/021.
+
+\bibitem{neukart2026em}
+F.~Neukart, E.~Marx, and V.~Vinokur,
+``Discrete electromagnetism in a finite-information space--time framework,''
+\textit{Results Phys.} \textbf{84}, 108629 (2026).
+DOI: 10.1016/j.rinp.2026.108629.
+
+\bibitem{hossenfelder2025}
+S.~Hossenfelder,
+``New theory: Space has memory, stores information,''
+Backreaction blog, 8 August 2025,
+\url{https://backreaction.blogspot.com/2025/08/new-theory-space-has-memory-stores.html}
+
+\bibitem{trugenberger2024}
+C.~A.~Trugenberger,
+``Dark matter and dark energy in combinatorial quantum gravity,''
+\textit{Class. Quantum Grav.} \textbf{41}, 217002 (2024).
+DOI: 10.1088/1361-6382/ad7acf.
+
+\bibitem{trugenberger2025}
+C.~A.~Trugenberger,
+``Networks as the fundamental constituents of the universe,''
+\textit{J. Phys. Complex.} \textbf{6}, 042001 (2025).
+DOI: 10.1088/2632-072X/ae29d3.
 
 \bibitem{miller1955}
 G.~A.~Miller,
