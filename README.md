@@ -21,7 +21,8 @@ anomalous mutual information (MI) between identically-prepared qubit arrays:
 pasm-experiments/
 ├── scripts/     # QPU submission, monitoring, and analysis code
 ├── data/        # Raw results, job IDs, per-experiment outputs
-├── analysis/    # LaTeX paper source (n47lab_paper.tex) and compiled PDF
+├── analysis/    # LaTeX paper source (n47lab_paper.tex), arXiv submission
+│                #   package (arxiv_submission/), analysis reports
 ├── figures/     # Figures used in the paper
 └── README.md
 ```
@@ -54,6 +55,12 @@ pasm-experiments/
 - `n47lab_chsh_pasm.py` — CHSH Bell test on PASM preparation
 - `n47lab_twirled_pasm.py` — Pauli twirling on CP gate
 - `n47lab_readout_cal.py` — 4×4 readout assignment calibration
+
+## Submission
+
+Preprint package for arXiv is available in `analysis/arxiv_submission/`
+(LaTeX source + 4 figures + submission checklist). Planned areas:
+`quant-ph` (primary), `hep-th`, `astro-ph.CO`.
 
 ## Citation
 
