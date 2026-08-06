@@ -67,7 +67,7 @@ Preprint package for arXiv is available in `analysis/arxiv_submission/`
 
 ## Author
 
-**N47Lab** — Independent researcher without formal academic affiliation.
+**N47Lab** — Independent researcher without academic degrees.
 
 This work was conceived, designed, executed, and analyzed by the author, using large language models (LLMs) as **cognitive prostheses** — tools that translate hypotheses into code, formalism, analysis pipelines, and prose.
 
