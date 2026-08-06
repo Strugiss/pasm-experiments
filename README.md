@@ -1,8 +1,8 @@
 # PASM Experiments — Classical Prethermal DTC on IBM Heron (N47Lab / MatterMemory)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21830091.svg)](https://doi.org/10.5281/zenodo.21830091)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21830071.svg)](https://doi.org/10.5281/zenodo.21830071)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21830095.svg)](https://doi.org/10.5281/zenodo.21830095)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21830151.svg)](https://doi.org/10.5281/zenodo.21830151)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21830154.svg)](https://doi.org/10.5281/zenodo.21830154)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21830143.svg)](https://doi.org/10.5281/zenodo.21830143)
 
 Experimental evidence for a **classical prethermal discrete time crystal (DTC)** realized via
 **Phase-Anchored State Multiplexing (PASM)** on IBM Quantum processors.
