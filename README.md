@@ -1,19 +1,22 @@
-# PASM Experiments — Sub-Planckian Phase Memory (N47Lab / MatterMemory)
+# PASM Experiments — Classical Prethermal DTC on IBM Heron (N47Lab / MatterMemory)
 
-Experimental evidence for a **sub-Planckian phase memory** accessed via
+Experimental evidence for a **classical prethermal discrete time crystal (DTC)** realized via
 **Phase-Anchored State Multiplexing (PASM)** on IBM Quantum processors.
 
 ## Abstract
 
 14 independent QPU experiments on two IBM Heron r2 processors
-(`ibm_marrakesh`, `ibm_kingston`) demonstrate a shared phase memory producing
-anomalous mutual information (MI) between identically-prepared qubit arrays:
+(`ibm_marrakesh`, `ibm_kingston`) demonstrate a **classical prethermal discrete time crystal (DTC)**
+via the **Phase-Anchored State Multiplexing (PASM)** protocol:
 
-- MI up to **0.722** at φ = π/2 (PASM-H variant), 99.9% reproducibility
-- Combined Z-score **> 50σ** (Fisher, 7 independent experiments)
-- **Distance-independent** memory (Z = 34σ)
-- **Classical** nature of the imprint (quantum discord < 0.01 in QST)
-- Null controls: entanglement witness MI = 0.00013, separate preparation MI < 0.001
+- **Subharmonic response**: φ-scan peak MI = **0.785 at φ = π** (period-doubling)
+- **Classical correlations**: Discord < 0.01 (QST), zero entanglement
+- **Distance independence**: MI distance-independent (Z = 34σ)
+- **3-qubit resonance**: MI peak at 3 qubits (0.159 ± 0.008)
+- **PASM-H enhancement**: MI = 0.722 ± 0.005 at φ = π/2 (phase-to-population conversion)
+- **Witness null**: MI = 0.00013 ± 0.0001 (below Miller–Madow floor)
+- **Noise resilience**: 25% degradation under amplitude damping
+- **Reproducibility**: 10 replicas, Z = 39.6σ (Kingston), combined Z > 50σ (Fisher)
 
 ## Repository structure
 
@@ -42,7 +45,7 @@ pasm-experiments/
 | φ-scan fine structure | `phi_scan.py` | peak MI = 0.785 at φ = π |
 | SWAP test | `esperimento_swap.py` | ΔF = +0.393 (34.2σ) |
 | PASM distance | `n47lab_submit_7x7.py` | MI = 0.0600, distance-independent (34σ) |
-| PASM 3-qubit | `n47lab_submit_7x7.py` | MI = 0.369 |
+| PASM 3-qubit | `n47lab_submit_7x7.py` | MI = 0.369 (8-outcome) |
 | Replica 10× | `n47lab_relancio_esperimenti.py` | MI = 0.0465 ± 0.0037 (39.6σ) |
 | QST/DISCORD | `n47lab_discord_analysis.py` | MI = 0.728, discord < 0.01 (classical) |
 | PASM-H φ-scan | `n47lab_phi_scan_approfondito.py` | **MI = 0.722 at φ = π/2** |
@@ -59,16 +62,25 @@ pasm-experiments/
 ## Submission
 
 Preprint package for arXiv is available in `analysis/arxiv_submission/`
-(LaTeX source + 4 figures + submission checklist). Planned areas:
-`quant-ph` (primary), `hep-th`, `astro-ph.CO`.
+(LaTeX source + 4 figures + submission checklist). Target journals:
+`quant-ph` (primary), `hep-th`, `astro-ph.CO`. Target journals: **PRL / Nature Physics / Science Advances**.
+
+## Author
+
+**N47Lab** — Independent researcher without formal academic affiliation.
+
+This work was conceived, designed, executed, and analyzed by the author, using large language models (LLMs) as **cognitive prostheses** — tools that translate hypotheses into code, formalism, analysis pipelines, and prose.
+
+The author is part of a **growing community of independent researchers who use LLMs as cognitive prostheses** (see: *The Agentic Researcher* [arXiv:2603.15914], *Research Factory* [GitHub: mindheadllc/research-factory], *JZ Institute of Science*, *OpenPhysica*, *Independent Research.ai*; surveys indicate >80% of researchers now use LLMs in their workflow [arXiv:2411.05025]).
+
+All scientific decisions — experimental design, parameter selection, interpretation pivots, control choices, conclusion framing — were made by the human researcher. The LLMs used (Claude, GPT-4) served as force multipliers for translation; every scientific decision was made by the human researcher.
 
 ## Citation
 
 ```bibtex
 @unpublished{tulli2026pasm,
   author  = {Alessandro Tulli},
-  title   = {Experimental Evidence for a Sub-Planckian Phase Memory
-             Accessible via Quantum Phase-Anchored State Multiplexing},
+  title   = {Observation of a Classical Prethermal Discrete Time Crystal on a Superconducting Quantum Processor},
   note    = {Preprint in preparation},
   year    = {2026}
 }
@@ -76,5 +88,8 @@ Preprint package for arXiv is available in `analysis/arxiv_submission/`
 
 ## License
 
-All data and code released under CC BY 4.0. Raw QPU data retain IBM Quantum
-Open Plan terms of use.
+All data and code released under CC BY 4.0. Raw QPU data retain IBM Quantum Open Plan terms of use.
+
+## Acknowledgments
+
+The author acknowledges the broader community of independent researchers using LLMs as cognitive prostheses, including the developers of *The Agentic Researcher* (ZIB-IOL, arXiv:2603.15914), *Research Factory* (GitHub: mindheadllc/research-factory), *JZ Institute of Science* (AI-augmented theoretical physics), *OpenPhysica* (openphysica.org), and the *Independent Research.ai* community. The survey by [arXiv:2411.05025] documenting >80% LLM adoption among researchers provided context for this work's methodology. IBM Quantum Network is acknowledged for open-plan access to Heron r2 processors.
