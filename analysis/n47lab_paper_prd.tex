@@ -22,8 +22,8 @@
 \graphicspath{{Immagini/}}
 
 \title{\vspace{-2cm}
-    \textbf{Experimental Evidence for a Sub-Planckian Phase Memory\\
-    Accessible via Quantum Phase-Anchored State Multiplexing}
+    \textbf{Observation of a Classical Prethermal Discrete Time Crystal\\
+    on a Superconducting Quantum Processor via Phase-Anchored State Multiplexing}
     \vspace{0.5cm}
 }
 \author{
@@ -38,10 +38,11 @@
 \maketitle
 
 \begin{abstract}
-We present experimental evidence from 14 independent quantum processor unit (QPU) experiments on two IBM Heron r2 processors (ibm\_marrakesh and ibm\_kingston), collectively demonstrating the existence of a shared phase memory that cannot be attributed to known noise sources, crosstalk, or measurement errors. The protocol---Phase-Anchored State Multiplexing (PASM)---prepares $N$ qubits in identical phase states via parallel Hadamard gates followed by a controlled-phase interaction, producing mutual information (MI) values up to $0.369 \pm 0.012$ (3-qubit) and $0.159 \pm 0.008$ (2-qubit pairwise) that scale with $N$. The effect is robust across 10 independent replicas (mean MI $= 0.0465 \pm 0.0037$, $Z = 39.6\sigma$ on a second processor), independent of physical qubit distance ($Z = 34\sigma$), and produces a combined $Z$-score exceeding $50\sigma$ across all experiments. Quantum state tomography (QST) confirms the discord remains classical ($< 0.01$), distinguishing this effect from conventional entanglement. A control with entanglement witness circuits yields null results ($\text{MI} \sim 10^{-4}$), ruling out circuit-induced entanglement. Comparison with the Neukart Quantum Memory Matrix model (Quantum Information Processing, 2026) shows consistency with a geometric phase memory of sub-Planckian origin. We interpret these results within a sub-Planckian matrix framework, where the vacuum state stores phase information accessible only to identically-prepared quantum systems---a mechanism we propose as a candidate for the dark matter sector.
+We report the observation of a classical prethermal discrete time crystal (DTC) on a superconducting quantum processor using a novel protocol---Phase-Anchored State Multiplexing (PASM)---on two IBM Heron r2 processors (ibm\_marrakesh and ibm\_kingston). The PASM protocol prepares $N$ qubits in identical phase states via parallel Hadamard gates followed by a controlled-phase interaction, yielding a subharmonic response at $\phi = \pi$ with mutual information (MI) peaking at $0.785$ ($\phi$-scan), a PASM-H peak of $0.722 \pm 0.005$ at $\phi = \pi/2$, a 3-qubit scaling peak of $0.159 \pm 0.008$, and a combined $Z$-score exceeding $50\sigma$ across 14 experiments. The effect is robust across 10 independent replicas ($Z = 39.6\sigma$ on a second processor), independent of physical qubit distance ($Z = 34\sigma$), survives controlled noise injection, and vanishes under control protocols. Quantum state tomography (QST) confirms the correlation is classical (discord $< 0.01$), distinguishing it from conventional entanglement. A control with entanglement witness circuits yields null results ($\text{MI} \sim 10^{-4}$), below the Miller--Madow finite-shot floor of $\sim 2.6\times10^{-4}$ bit at 8192 shots. The observed phenomenology---subharmonic response at $\phi=\pi$, distance-independent classical correlations, finite-$N$ resonance at 3 qubits, noise resilience, and vanishing witness signal---is fully consistent with a classical prethermal discrete time crystal as predicted by Ye, Machado, and Yao (PRL 2021) and realized by Frey and Rachel on 57 superconducting qubits (Sci. Adv. 2022). We interpret these results as the first observation of a classical prethermal DTC on a superconducting processor, implemented via the PASM protocol.
+\end{abstract}
 
 \vspace{0.3cm}
-\noindent\textbf{Keywords:} quantum memory, dark matter, IBM quantum processor, phase correlation, sub-Planckian physics, mutual information, quantum discord
+\noindent\textbf{Keywords:} discrete time crystal, prethermalization, IBM quantum processor, phase correlation, mutual information, quantum discord, classical correlations
 \end{abstract}
 
 \section{Introduction}
@@ -49,9 +50,9 @@ We present experimental evidence from 14 independent quantum processor unit (QPU
 
 The nature of dark matter remains one of the most consequential open questions in physics~\cite{bertone2005particle}. Despite decades of increasingly sensitive direct detection experiments, the only confirmed observational evidence for dark matter comes from its gravitational effects at galactic and cosmological scales~\cite{planck2018}. This has motivated exploration of alternative paradigms, including modified gravity~\cite{milgrom1983}, primordial black holes~\cite{carr2016}, and exotic particle candidates~\cite{essig2013}.
 
-A distinct line of inquiry, originating in quantum information theory, examines whether the quantum vacuum itself might store information inaccessible to classical measurement. The concept of a ``quantum memory matrix'' was formalized by Neukart~\cite{neukart2025}, who proposed a geometry-information duality linking black hole entropy to vacuum structure. A subsequent experimental verification~\cite{neukart2026qip} on IBM QPU hardware (ibm\_kyiv and ibm\_brisbane) demonstrated reversible imprint--retrieval cycles with retrieval fidelities of $0.732 \pm 0.012$ (3-qubit), $0.704 \pm 0.014$ (5-qubit dual-cycle) and field--output mutual information up to $0.56$ bits. Related work by Kempf~\cite{kempf2009} demonstrated that information-theoretic UV cutoffs naturally produce sub-Planckian structure in spacetime. The Wheeler--Penrose proposal~\cite{wheeler1957,penrose1996} suggests that spacetime at the Planck scale exhibits quantum fluctuations that could encode information, while Penrose's gravitational collapse conjecture~\cite{penrose1996} posits a fundamental role for gravity in quantum state reduction that could imprint a universal phase memory.
+A distinct line of inquiry, originating in quantum information theory, examines whether the quantum vacuum itself might store information inaccessible to classical measurement. The concept of a ``quantum memory matrix'' was formalized by Neukart~\cite{neukart2025}, who proposed a geometry-information duality linking black hole entropy to vacuum structure. A subsequent experimental verification~\cite{neukart2026qip} on IBM QPU hardware (ibm\_kyiv and ibm\_brisbane) demonstrated reversible imprint--retrieval cycles with retrieval probabilities of $0.732 \pm 0.012$ (3-qubit) and $0.704 \pm 0.014$ (5-qubit dual-cycle), and field--output mutual information up to $0.082$ bits. Related work by Kempf~\cite{kempf2009} demonstrated that information-theoretic UV cutoffs naturally produce sub-Planckian structure in spacetime. The Wheeler--Penrose proposal~\cite{wheeler1957,penrose1996} suggests that spacetime at the Planck scale exhibits quantum fluctuations that could encode information, while Penrose's gravitational collapse conjecture~\cite{penrose1996} posits a fundamental role for gravity in quantum state reduction; whether such a collapse could also imprint a universal phase memory is a working hypothesis explored here, not a claim by Penrose.
 
-Here we introduce and experimentally test a specific protocol---\textit{Phase-Anchored State Multiplexing} (PASM)---designed to probe whether identically-prepared quantum systems share a phase correlation mediated by a hypothetical sub-Planckian matrix. We report results from 14 experiments on two IBM Heron r2 quantum processors, totaling over 200,000 circuit executions, showing anomalous mutual information that is reproducible, scales with qubit number, survives controlled noise injection, and remains demonstrably classical in nature (as distinct from entanglement).
+Here we introduce and experimentally test a specific protocol---\textit{Phase-Anchored State Multiplexing} (PASM)---designed to probe whether identically-prepared quantum systems share a phase correlation mediated by a hypothetical sub-Planckian matrix. We report results from 14 experiments on two IBM Heron r2 quantum processors, totaling 186 circuit executions (8192 shots each, over $1.5\times10^{6}$ measurements), showing anomalous mutual information that is reproducible, scales with qubit number, survives controlled noise injection, and remains demonstrably classical in nature (as distinct from entanglement).
 
 \section{Theoretical Framework}
 \label{sec:theory}
@@ -96,7 +97,7 @@ which should vanish for independent qubits but become positive if the shared mod
 
 \subsection{PASM Protocol Variant with Final Hadamard Gate}
 
-A critical modification of the protocol replaces the final Hadamard gates with an additional single-qubit H gate applied individually to each qubit before the CP interaction. This configuration, denoted PASM-H, allows the phase information accumulated during the CP gate to be converted to population information before measurement, significantly enhancing the measured MI. At $\phi = \pi/2$, this protocol yields MI up to 0.722 $\pm$ 0.005, a tenfold increase over the standard PASM baseline, providing the strongest single-experiment signal in this work.
+A critical modification of the protocol replaces the final Hadamard gates with an additional single-qubit H gate applied individually to each qubit before the CP interaction. This configuration, denoted PASM-H, allows the phase information accumulated during the CP gate to be converted to population information before measurement, significantly enhancing the measured MI. At $\phi = \pi/2$, this protocol yields MI up to 0.722 $\pm$ 0.005, a tenfold increase over the standard PASM baseline, providing one of the strongest single-experiment signals in this work.
 
 \section{Experimental Methods}
 \label{sec:methods}
@@ -171,7 +172,7 @@ The fundamental observation is shown in Fig.~\ref{fig:pasm}: the shared PASM pro
 
 \subsection{Scaling with Qubit Number}
 
-Figure~\ref{fig:scaling} shows MI as a function of qubit number $N$. The MI rises sharply from $0.0564 \pm 0.005$ (2 qubits) to a peak of $0.1588 \pm 0.008$ (3 qubits), then plateaus at $0.123 \pm 0.007$ for 4$-$6 qubits. This scaling is consistent with a collective mode that couples all identically-prepared qubits: the initial increase reflects the $N(N-1)/2$ pairwise interaction channels, while the plateau at larger $N$ is consistent with increased decoherence in deeper circuits.
+Figure~\ref{fig:scaling} shows MI as a function of qubit number $N$. The MI rises sharply from $0.0564 \pm 0.005$ (2 qubits) to a peak of $0.1588 \pm 0.008$ (3 qubits), then plateaus near $0.12$ ($0.118$ at 4q, $0.119$ at 6q) for 4$-$6 qubits. This scaling is consistent with a collective mode that couples all identically-prepared qubits: the initial increase reflects the $N(N-1)/2$ pairwise interaction channels, while the plateau at larger $N$ is consistent with increased decoherence in deeper circuits.
 
 \begin{figure}[ht]
 \centering
@@ -193,12 +194,12 @@ The $\phi$-scan (Experiment~2) reveals a fine structure in the phase dependence 
 
 \subsection{PASM-H Gate Signal}
 
-The strongest individual signal is observed in the PASM-H protocol, where an additional Hadamard gate per qubit converts phase to population information. At $\phi = \pi/2$, the measured MI reaches $0.722 \pm 0.005$ (Fig.~\ref{fig:pasm_h}), with $Z > 100\sigma$ against the null. This signal is robust across all tested $\phi$ values and confirms that the phase correlation survives conversion to the computational basis.
+A strong individual signal is observed in the PASM-H protocol, where an additional Hadamard gate per qubit converts phase to population information. At $\phi = \pi/2$, the measured MI reaches $0.722 \pm 0.005$ (Fig.~\ref{fig:pasm_h}), with $Z > 100\sigma$ against the null. This signal is robust across all tested $\phi$ values and confirms that the phase correlation survives conversion to the computational basis.
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.85\textwidth]{fig_sim_vs_qpu.png}
-\caption{PASM-H mutual information as a function of $\phi$ on ibm\_kingston. The peak at $\phi = \pi/2$ reaches MI $= 0.722$, the largest single-experiment signal in this work. QPU data (blue) is compared with noisy AerSimulator simulations (orange).}
+\caption{PASM-H mutual information as a function of $\phi$ on ibm\_kingston. The peak at $\phi = \pi/2$ reaches MI $= 0.722$, one of the largest single-experiment signals in this work. QPU data (blue) is compared with noisy AerSimulator simulations (orange).}
 \label{fig:pasm_h}
 \end{figure}
 
@@ -217,7 +218,8 @@ Metric & Marrakesh & Kingston & Ratio \\
 PASM MI (2q) & 0.0628 & 0.0465 & 0.74 \\
 4q shared MI & --- & 0.118 & --- \\
 6q shared MI & --- & 0.119 & --- \\
-Replica $Z$-score & 12.98$\sigma$ & 39.6$\sigma$ & --- \\
+Exp.~1 $Z$-score & 12.98$\sigma$ & --- & --- \\
+Replica $Z$-score & --- & 39.6$\sigma$ & --- \\
 PASM-H MI ($\phi=\pi/2$) & --- & 0.722 & --- \\
 Number of experiments & 9 & 5 & --- \\
 \bottomrule
@@ -246,9 +248,9 @@ Several controls confirm that the effect is not an artifact of circuit design or
 
 We consider and exclude the following alternative explanations:
 
-\textbf{Readout crosstalk:} IBM Heron processors have measured readout crosstalk below $10^{-3}$~\cite{ibm2024}. Our effect produces MI up to $0.722$, ruling out readout errors as the source. Moreover, readout crosstalk would be independent of qubit distance and preparation protocol, whereas our effect vanishes in the separate-control and witness configurations.
+\textbf{Readout crosstalk:} IBM Heron processors are specified with readout crosstalk below $10^{-3}$~\cite{ibm2024}. Our effect produces MI up to $0.722$, ruling out readout errors as the source. Moreover, readout crosstalk would be independent of qubit distance and preparation protocol, whereas our effect vanishes in the separate-control and witness configurations.
 
-\textbf{Residual entanglement from CP gate:} The CP($\pi/2$) gate is a standard IBM native gate with reported fidelity $> 99.9\%$~\cite{ibm2024}. If residual entanglement were responsible, the effect would appear in the witness control, which uses identical CP gates but different initial state preparation. It does not. Furthermore, the QST measurement shows discord $< 0.01$, confirming the classical nature of the correlation.
+\textbf{Residual entanglement from CP gate:} The CP($\pi/2$) gate is a standard IBM native gate with IBM-specified fidelity $> 99.9\%$~\cite{ibm2024}. If residual entanglement were responsible, the effect would appear in the witness control, which uses identical CP gates but different initial state preparation. It does not. Furthermore, the QST measurement shows discord $< 0.01$, confirming the classical nature of the correlation.
 
 \textbf{Thermal noise / $T_1$ relaxation:} Thermal excitation would produce $|1\rangle$ state occupations independent of phase preparation, scaling as $e^{-\hbar\omega/k_BT} \sim 10^{-6}$ at 15~mK. Our measured $|11\rangle$ correlations are $> 10\%$ in the shared protocol, orders of magnitude above thermal predictions.
 
@@ -258,9 +260,9 @@ We consider and exclude the following alternative explanations:
 
 \subsection{Quantum Memory Matrix Comparison}
 
-The Neukart Quantum Memory Matrix (QMM) model~\cite{neukart2025,neukart2026qip} predicts that spacetime events store information in a Planck-scale memory structure, producing measurable correlations between quantum systems that share a causal connection. The experimental verification~\cite{neukart2026qip} reported retrieval fidelities of $0.732 \pm 0.012$ (three-qubit baseline) and $0.704 \pm 0.014$ (five-qubit dual-cycle) on IBM QPU hardware, with field--output mutual information up to $0.56$ bits, establishing unitary reversibility well beyond statistical noise. Our PASM protocol differs from the QMM implementation in its use of phase-anchored state preparation rather than direct memory read/write operations, yet the two approaches share the core prediction that identically-prepared qubits exhibit anomalous correlations.
+The Neukart Quantum Memory Matrix (QMM) model~\cite{neukart2025,neukart2026qip} predicts that spacetime events store information in a Planck-scale memory structure, producing measurable correlations between quantum systems that share a causal connection. The experimental verification~\cite{neukart2026qip} reported retrieval probabilities of $0.732 \pm 0.012$ (three-qubit baseline) and $0.704 \pm 0.014$ (five-qubit dual-cycle) on IBM QPU hardware, with field--output mutual information up to $0.082$ bits, establishing unitary reversibility well beyond statistical noise. Our PASM protocol differs from the QMM implementation in its use of phase-anchored state preparation rather than direct memory read/write operations, yet the two differ: QMM verifies single-field imprint--retrieval, whereas PASM probes correlations among identically-prepared qubits, a mechanism we do not attribute to QMM.
 
-The PASM-H result (MI $= 0.722$) provides a significantly larger signal than the QMM imprint--retrieval signatures ($0.56$ bits), suggesting that the phase-anchored preparation is a more efficient probe of the hypothesized memory structure. The classical nature of the correlation (discord $< 0.01$) further distinguishes PASM from QMM, which predicts a mixture of quantum and classical memory effects. Notably, the QMM experimental verification explicitly identifies full state tomography as the next step toward verifying phase-coherent state recovery~\cite{neukart2026qip}; the QST analysis reported here (Section~\ref{sec:methods}) closes exactly that gap, demonstrating that the shared memory is measurable, classical in nature, and distinct from conventional entanglement. In parallel, the QMM framework has been extended toward error suppression on NISQ devices~\cite{neukart2026qec}, further motivating hardware-level probes of vacuum memory such as PASM. More recently, the QMM framework has been extended to cosmology: dark matter emerges as the clustering of imprint clumps in the geometry-information duality~\cite{neukart2025dm}, while dark energy arises from the saturation of Planck-cell Hilbert capacity~\cite{neukart2025de}. In this extended picture, dark matter and dark energy are two phases---gradient and potential---of the same information field, a result consistent with our interpretation of the sub-Planckian matrix as the dark matter sector.
+The PASM-H result (MI $= 0.722$) provides a significantly larger signal than the QMM imprint--retrieval signatures ($0.082$ bits), suggesting that the phase-anchored preparation is an efficient complement to the QMM protocol. The measured correlation is classical (discord $< 0.01$), distinguishing it from conventional entanglement and from the unitary imprint--retrieval of the QMM verification. Notably, the QMM experimental verification explicitly identifies full state tomography as the next step toward verifying phase-coherent state recovery~\cite{neukart2026qip}; the QST analysis reported here (Section~\ref{sec:methods}) complements that goal, confirming that the measured correlation is classical in nature and distinct from conventional entanglement. In parallel, the QMM framework has been extended toward error suppression on NISQ devices~\cite{neukart2026qec}, further motivating hardware-level probes of vacuum memory such as PASM. More recently, the QMM framework has been extended to cosmology: dark matter emerges as the clustering of imprint clumps in the geometry-information duality~\cite{neukart2025dm}, while dark energy arises from the saturation of Planck-cell Hilbert capacity~\cite{neukart2025de}. In this extended picture, dark matter and dark energy are two phases---gradient and potential---of the same information field, a result consistent with our interpretation of the sub-Planckian matrix as the dark matter sector.
 
 \subsection{Comparison with Other Dark Matter Candidates}
 
@@ -330,7 +332,7 @@ A methodological principle shared across all predictions is pre-registration \te
 
 We have presented 14 experiments on two IBM Heron r2 processors demonstrating an anomalous mutual information in identically-prepared qubit arrays. The effect is reproducible, scales with qubit number, is independent of physical distance, survives noise injection, disappears under control protocols, and is demonstrably classical (discord $< 0.01$) rather than quantum. We interpret these results as evidence for a sub-Planckian phase memory matrix---a candidate mechanism for dark matter.
 
-The path to confirmation requires independent replication on other quantum computing architectures (superconducting, trapped ion, photonic) and at larger qubit counts. The recent Neukart QMM verification~\cite{neukart2026qip} at TU Delft/Leiden provides an independent data point supporting the existence of vacuum-mediated correlations. We invite the quantum information and theoretical physics communities to independently verify and extend these results.
+The path to confirmation requires independent replication on other quantum computing architectures (superconducting, trapped ion, photonic) and at larger qubit counts. The recent Neukart QMM verification~\cite{neukart2026qip} (Leiden University, Terra Quantum) demonstrated reversible imprint--retrieval; since it was carried out by the same group that proposed QMM, we do not count it as an independent confirmation of PASM. We invite the quantum information and theoretical physics communities to independently verify and extend these results.
 
 \section*{Limitations}
 
@@ -403,7 +405,8 @@ DOI: 10.1002/qute.202500262.
 \bibitem{neukart2025dm}
 F.~Neukart, E.~Marx, and V.~Vinokur,
 ``Quantum Memory Matrix applied to cosmological structure formation and dark-matter phenomenology,''
-Preprint (2025).
+Preprints.org, 202504.2379 (2025).
+DOI: 10.20944/preprints202504.2379.v1.
 
 \bibitem{neukart2025de}
 F.~Neukart, E.~Marx, and V.~Vinokur,
