@@ -83,10 +83,11 @@ All scientific decisions — experimental design, parameter selection, interpret
 
 ```bibtex
 @unpublished{tulli2026pasm,
-  author  = {Alessandro Tulli},
-  title   = {Observation of a Classical Prethermal Discrete Time Crystal on a Superconducting Quantum Processor},
-  note    = {Preprint in preparation},
-  year    = {2026}
+  author = {Alessandro Tulli},
+  title  = {Observation of a Classical Prethermal Discrete Time Crystal
+            on a Superconducting Quantum Processor via Phase-Anchored State Multiplexing},
+  note   = {Submitted to Physical Review Letters (es2026aug09\_746); preprint: 10.5281/zenodo.21938548},
+  year   = {2026}
 }
 ```
 
