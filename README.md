@@ -1,100 +1,95 @@
-# PASM Experiments — Classical Prethermal DTC on IBM Heron (N47Lab / MatterMemory)
+# pasm-experiments — Dati e analisi degli esperimenti PASM/DTC su IBM Quantum
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21830151.svg)](https://doi.org/10.5281/zenodo.21830151)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21830154.svg)](https://doi.org/10.5281/zenodo.21830154)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21830143.svg)](https://doi.org/10.5281/zenodo.21830143)
-
-Experimental evidence for a **classical prethermal discrete time crystal (DTC)** realized via
-**Phase-Anchored State Multiplexing (PASM)** on IBM Quantum processors.
+[![Licenza: MIT](https://img.shields.io/badge/Licenza-MIT-yellow.svg)](LICENSE)
+[![Versione](https://img.shields.io/badge/versione-v1.0.1-informational)](https://github.com/Strugiss/pasm-experiments/releases/tag/v1.0.1)
 
 ## Abstract
 
-14 independent QPU experiments on two IBM Heron r2 processors
-(`ibm_marrakesh`, `ibm_kingston`) demonstrate a **classical prethermal discrete time crystal (DTC)**
-via the **Phase-Anchored State Multiplexing (PASM)** protocol:
+Questo repository contiene i **dati grezzi**, gli **script di analisi** e il **sorgente LaTeX** degli esperimenti che hanno osservato un **cristallo temporale discreto (DTC) classico pre-termale** tramite il protocollo **PASM (Phase-Anchored State Multiplexing)** su processori IBM Quantum Heron. I **14 esperimenti QPU** indipendenti su `ibm_marrakesh` e `ibm_kingston` mostrano una memoria di fase condivisa con **significatività combinata Z > 50σ** (replica 10×: Z = 39.6σ; test distanza: Z = 34σ) e mutua informazione condivisa **0.063 ± 0.005** (marrakesh) / **0.047 ± 0.004** (kingston). Il manoscritto è in revisione presso **Physical Review Letters** (preprint: DOI [10.5281/zenodo.21938548](https://doi.org/10.5281/zenodo.21938548)).
 
-- **Subharmonic response**: φ-scan peak MI = **0.785 at φ = π** (period-doubling)
-- **Classical correlations**: Discord < 0.01 (QST), zero entanglement
-- **Distance independence**: MI distance-independent (Z = 34σ)
-- **3-qubit resonance**: MI peak at 3 qubits (0.159 ± 0.008)
-- **PASM-H enhancement**: MI = 0.722 ± 0.005 at φ = π/2 (phase-to-population conversion)
-- **Witness null**: MI = 0.00013 ± 0.0001 (below Miller–Madow floor)
-- **Noise resilience**: 25% degradation under amplitude damping
-- **Reproducibility**: 10 replicas, Z = 39.6σ (Kingston), combined Z > 50σ (Fisher)
+![Mutua informazione per esperimento PASM/DTC](https://n47lab.altervista.org/research/immagini/pasm_mi_esperimenti.png)
 
-## Repository structure
+*Mutua informazione (MI) per esperimento. Fonte: manoscritto PRL es2026aug09_746 e report di laboratorio.*
 
-```
-pasm-experiments/
-├── scripts/     # QPU submission, monitoring, and analysis code
-├── data/        # Raw results, job IDs, per-experiment outputs
-├── analysis/    # LaTeX paper source (n47lab_paper.tex), arXiv submission
-│                #   package (arxiv_submission/), analysis reports
-├── figures/     # Figures used in the paper
-└── README.md
-```
+## Method and Results
 
-## Hardware & environment
+**Metodo.** PASM usa ancore di fase per collegare esecuzioni separate di circuiti quantistici e misurare le correlazioni residue tra qubit (mutua informazione condivisa). Hardware: IBM Quantum Heron r2, `SamplerV2(mode=backend)` senza Session/Batch, `optimization_level=1` sempre (preserva barriere e delay), 8192–65536 shots per circuito. Ogni esperimento è corredato di veti di controllo (baseline, duplicati, split-half, guardie) e job ID tracciabili.
 
-- IBM Quantum Open Plan (free tier), `SamplerV2(mode=backend)` — no Session/Batch
-- `optimization_level=1` always (preserves barriers/delays)
-- Qiskit 2.5.1, qiskit-ibm-runtime 0.48.0
-- Backends: `ibm_marrakesh`, `ibm_kingston` (Heron r2, 156q), `ibm_fez`
+Risultati chiave (tutti dai dati reali pubblicati):
 
-## Key experiments (scripts → data)
+| Esperimento | Valore |
+|---|---|
+| Esperimenti QPU completati | 14 |
+| Significatività combinata (memoria condivisa) | Z > 50σ |
+| MI condivisa — ibm_marrakesh | 0.063 ± 0.005 |
+| MI condivisa — ibm_kingston | 0.047 ± 0.004 |
+| Replica 10× | Z = 39.6σ |
+| PASM Distanza | Z = 34σ, MI indipendente dalla distanza |
+| φ-scan | MI modulata da φ, picco a π |
+| WITNESS (controllo) | MI = 0.00013 (zero) |
+| QST / DISCORD | MI = 0.728, classico (< 0.01) |
+| Scaling | MI picco a 3 qubit = 0.159 |
 
-| Experiment | Script | Result |
+Le correlazioni sono **classiche**: il controllo WITNESS dà W = 6.1e-17 (nessun entanglement), e la QST stima discord < 0.01.
+
+## Dataset Overview
+
+I dati degli esiti QPU sono file JSON; nel repository sono raccolti in `data/` (l'archivio completo con job ID e output per esperimento è anche su Zenodo, DOI [10.5281/zenodo.21830151](https://doi.org/10.5281/zenodo.21830151)). Struttura e campi principali:
+
+| File / gruppo | Campi principali | Contenuto |
 |---|---|---|
-| PASM shared MI | `pasm_marrakesh.py` | MI = 0.0628 ± 0.005 (13σ) |
-| φ-scan fine structure | `phi_scan.py` | peak MI = 0.785 at φ = π |
-| SWAP test | `esperimento_swap.py` | ΔF = +0.393 (34.2σ) |
-| PASM distance | `n47lab_submit_7x7.py` | MI = 0.0600, distance-independent (34σ) |
-| PASM 3-qubit | `n47lab_submit_7x7.py` | MI = 0.369 (8-outcome) |
-| Replica 10× | `n47lab_relancio_esperimenti.py` | MI = 0.0465 ± 0.0037 (39.6σ) |
-| QST/DISCORD | `n47lab_discord_analysis.py` | MI = 0.728, discord < 0.01 (classical) |
-| PASM-H φ-scan | `n47lab_phi_scan_approfondito.py` | **MI = 0.722 at φ = π/2** |
-| WITNESS control | `n47lab_submit_7x7.py` | MI = 0.00013 (null) |
+| `pasm_dtc_experiments_metadata.json` | `generated`, `experiments`, `backends`, `qubit_triplets`, `distance_pairs` | Metadati di 9 campagne (`pasm_base`, `phi_scan`, `echo_hahn`, `delay_sweep`, `frequency_sweep`, `fft_subharmonic_discovery`, `fft_subharmonic_precision`, `m3_3q_readout`, `vz_tomography`) con backend, shots, qubit, valori di φ, ripetizioni |
+| `scissione_qpu_report_*.json` | `mode`, `job_id`, `nrep`, `S3_net`, `S3_se`, `M4_net`, `lambda2`, `lambda1_ratio`, `soglie`, `sv`, `chirp`, `esito`, `veti` | Report del test di scissione (una sola memoria o più componenti): autovalori, soglie null, esito e veti |
+| `witness_report_sim_*.json` | `W`, `XX`, `YY`, `ZZ`, `entanglement_detected`, `verdict` | Controllo WITNESS: W = 6.1e-17 → nessun entanglement |
+| `piano_E3_qpu_report_*.json` | `R1`, `R4`, `dK`, `KSCAN`, `WITNESS`, `ANNICH`, `BASELINE`, `veti` | Test di annichilazione (Piano E3) con soglie e veti per backend |
+| `orme_qpu_report_*.json`, `linearita_qpu_report_*.json` | metriche per cella, `z`, `p`, verdetti | Controlli di robustezza: orme (eco − DUP) e linearità |
+| `scissione_calibra_aer_*.json` | `lambda2` p99/media, `lambda1_ratio` p99, seed, repliche | Calibrazione del null su AER/simulatore per backend |
 
-## Upcoming experiments (window 26/08/2026)
+## Data Processing Notes
 
-- `n47lab_pasm_zne.py` — zero-noise extrapolation (gate folding 1×/3×/5×)
-- `n47lab_pasm_symmetric.py` — symmetric qubit map, shared vs separate
-- `n47lab_chsh_pasm.py` — CHSH Bell test on PASM preparation
-- `n47lab_twirled_pasm.py` — Pauli twirling on CP gate
-- `n47lab_readout_cal.py` — 4×4 readout assignment calibration
+- **Flusso:** submit del circuito → fetch dell'esito (`mode: fetch`) → analisi. Gli script di submit/analisi principali sono in `scripts/` (es. submit PASM, phi-scan, analisi discord, relancio repliche); il sorgente del paper è in `analysis/`.
+- **Metriche:** mutua informazione condivisa per coppia/tripletta di qubit, con barre di errore; FFT per la subarmonica a f = 0.5 (period-doubling); autovalori (λ2, λ1-ratio) per il test di scissione; operatore W per l'entanglement; Z combinato con Fisher.
+- **Veti:** ogni run passa da controlli su baseline, duplicati (DUP), split-half e guardie; un run che fallisce un veto è dichiarato invalido, non interpretato.
+- **Nota FFT:** la subarmonica è a f = 0.5 (indice n/2), con SNR robusto senza bias.
 
-## Submission
+## Riproducibilità
 
-Preprint package for arXiv is available in `analysis/arxiv_submission/`
-(LaTeX source + 4 figures + submission checklist). Target journals:
-`quant-ph` (primary), `hep-th`, `astro-ph.CO`. Target journals: **PRL / Nature Physics / Science Advances**.
+```bash
+pip install qiskit qiskit-ibm-runtime
+# 1) submit su IBM Quantum Open Plan (SamplerV2(mode=backend) diretto, niente Session/Batch)
+python scripts/pasm_marrakesh.py
+# 2) analisi degli esiti (MI, FFT subarmonica, veti)
+python scripts/n47lab_discord_analysis.py
+```
 
-## Author
+Requisiti: Qiskit 2.5.x + qiskit-ibm-runtime 0.4x; backend `ibm_marrakesh`, `ibm_kingston` (Heron r2, 156 qubit) o `ibm_fez`. I token IBM non sono inclusi nel repository.
 
-**N47Lab** — Independent researcher without academic degrees.
+## Come citare
 
-This work was conceived, designed, executed, and analyzed by the author, using large language models (LLMs) as **cognitive prostheses** — tools that translate hypotheses into code, formalism, analysis pipelines, and prose.
-
-The author is part of a **growing community of independent researchers who use LLMs as cognitive prostheses** (see: *The Agentic Researcher* [arXiv:2603.15914], *Research Factory* [GitHub: mindheadllc/research-factory], *JZ Institute of Science*, *OpenPhysica*, *Independent Research.ai*; surveys indicate >80% of researchers now use LLMs in their workflow [arXiv:2411.05025]).
-
-All scientific decisions — experimental design, parameter selection, interpretation pivots, control choices, conclusion framing — were made by the human researcher. The LLMs used (Claude, GPT-4) served as force multipliers for translation; every scientific decision was made by the human researcher.
-
-## Citation
+Il file [`CITATION.cff`](CITATION.cff) è pronto per GitHub ("Cite this repository"). Testo:
 
 ```bibtex
-@unpublished{tulli2026pasm,
-  author = {Alessandro Tulli},
-  title  = {Observation of a Classical Prethermal Discrete Time Crystal
-            on a Superconducting Quantum Processor via Phase-Anchored State Multiplexing},
-  note   = {Submitted to Physical Review Letters (es2026aug09\_746); preprint: 10.5281/zenodo.21938548},
-  year   = {2026}
+@dataset{tulli2026pasmdatasets,
+  author = {Tulli, Alessandro},
+  title  = {pasm-experiments: PASM/DTC experimental data on IBM Quantum},
+  year   = {2026},
+  doi    = {10.5281/zenodo.21830151},
+  url    = {https://github.com/Strugiss/pasm-experiments}
 }
 ```
 
-## License
+## Link
 
-All data and code released under CC BY 4.0. Raw QPU data retain IBM Quantum Open Plan terms of use.
+- Sito N47Lab: <https://n47lab.altervista.org/>
+- Ricerca (dati, grafici, tabelle): <https://n47lab.altervista.org/research/>
+- Preprint PRL: <https://doi.org/10.5281/zenodo.21938548>
+- Repository della ricerca: <https://github.com/Strugiss/N47Lab-QuantumResearch>
+- Traiettoria di ricerca (research-timeline): <https://doi.org/10.5281/zenodo.21855315>
+- Dossier anomalia π-echo: <https://doi.org/10.5281/zenodo.21893791>
 
-## Acknowledgments
+## Licenza
 
-The author acknowledges the broader community of independent researchers using LLMs as cognitive prostheses, including the developers of *The Agentic Researcher* (ZIB-IOL, arXiv:2603.15914), *Research Factory* (GitHub: mindheadllc/research-factory), *JZ Institute of Science* (AI-augmented theoretical physics), *OpenPhysica* (openphysica.org), and the *Independent Research.ai* community. The survey by [arXiv:2411.05025] documenting >80% LLM adoption among researchers provided context for this work's methodology. IBM Quantum Network is acknowledged for open-plan access to Heron r2 processors.
+I **dati** di questo repository e il deposito Zenodo [10.5281/zenodo.21830151](https://doi.org/10.5281/zenodo.21830151) sono rilasciati sotto **CC BY 4.0**; il **codice** degli script è rilasciato sotto **MIT** (vedi [`LICENSE`](LICENSE)). I dati QPU grezzi restano soggetti ai termini dell'IBM Quantum Open Plan.
+
+**Avviso di stato:** i risultati non sono peer-reviewed; il manoscritto è in revisione presso Physical Review Letters.
